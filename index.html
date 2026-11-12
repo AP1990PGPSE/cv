@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f5f0">
+  <meta name="description" content="Etunimi Sukunimen ansioluettelo ja portfolio.">
+  <title>Etunimi Sukunimi — CV ja portfolio</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f5f5f0;
+      --ink: #1d2723;
+      --muted: #68716b;
+      --line: #dce0d8;
+      --accent: #c9f269;
+      --surface: #fff;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 16px/1.65 var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+
+    a:focus-visible {
+      outline: 3px solid #557c14;
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 48px));
+      margin-inline: auto;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      min-height: 76px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .wordmark {
+      font-size: .9rem;
+      font-weight: 750;
+      letter-spacing: -.03em;
+      text-decoration: none;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 26px;
+    }
+
+    .nav a {
+      color: var(--muted);
+      font-size: .82rem;
+      text-decoration: none;
+    }
+
+    .nav a:hover, .text-link:hover { color: #557c14; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 230px;
+      align-items: end;
+      gap: 48px;
+      padding-block: 100px 86px;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #81a932;
+      content: "";
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      max-width: 760px;
+      margin-bottom: 22px;
+      font: 500 clamp(3.2rem, 8vw, 6.7rem)/.98 var(--serif);
+      letter-spacing: -.065em;
+    }
+
+    .headline {
+      margin-bottom: 18px;
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      font-weight: 600;
+      letter-spacing: -.025em;
+    }
+
+    .intro {
+      max-width: 610px;
+      margin-bottom: 30px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+      border: 1px solid var(--ink);
+      border-radius: 3px;
+      background: var(--ink);
+      color: white;
+      font-size: .85rem;
+      font-weight: 650;
+      text-decoration: none;
+      transition: background .2s, color .2s;
+    }
+
+    .button:hover { background: transparent; color: var(--ink); }
+
+    .text-link {
+      font-size: .85rem;
+      font-weight: 650;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+    }
+
+    .hero-card {
+      display: flex;
+      min-height: 230px;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 22px;
+      background: var(--accent);
+    }
+
+    .hero-card span {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .hero-card strong {
+      font: 500 2rem/1.12 var(--serif);
+      letter-spacing: -.04em;
+    }
+
+    .hero-card small { font-size: .8rem; }
+
+    .content {
+      display: grid;
+      grid-template-columns: 220px minmax(0, 1fr);
+      gap: 72px;
+      padding-block: 30px 100px;
+    }
+
+    .side-label {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .section {
+      padding-block: 40px;
+      border-top: 1px solid var(--line);
+      scroll-margin-top: 24px;
+    }
+
+    .section:first-child { padding-top: 0; border-top: 0; }
+
+    .section h2 {
+      margin-bottom: 25px;
+      font: 500 2rem/1.1 var(--serif);
+      letter-spacing: -.035em;
+    }
+
+    .section p { color: var(--muted); }
+
+    .entry + .entry { margin-top: 34px; }
+
+    .entry-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 20px;
+    }
+
+    .entry h3 {
+      margin-bottom: 3px;
+      font-size: 1rem;
+      letter-spacing: -.02em;
+    }
+
+    .date {
+      flex: 0 0 auto;
+      color: var(--muted);
+      font-size: .78rem;
+    }
+
+    .entry .subline {
+      margin-bottom: 12px;
+      font-size: .85rem;
+    }
+
+    .entry ul {
+      margin: 0;
+      padding-left: 19px;
+      color: var(--muted);
+    }
+
+    .entry li + li { margin-top: 5px; }
+
+    .project-link {
+      font-weight: 700;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .tags li {
+      padding: 5px 10px;
+      border: 1px solid var(--line);
+      border-radius: 99px;
+      color: var(--muted);
+      font-size: .74rem;
+    }
+
+    .skill-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .skill-list strong { font-size: .88rem; }
+    .skill-list p { margin: 4px 0 0; font-size: .88rem; }
+
+    .contact-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 28px;
+      background: var(--accent);
+    }
+
+    .contact-card h2 {
+      margin-bottom: 5px;
+      font: 500 1.7rem/1.15 var(--serif);
+    }
+
+    .contact-card p { margin: 0; color: #424d37; font-size: .88rem; }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding-block: 25px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .76rem;
+    }
+
+    @media (max-width: 720px) {
+      .wrap { width: min(100% - 36px, 560px); }
+      .topbar { min-height: 68px; align-items: flex-start; flex-direction: column; justify-content: center; gap: 4px; padding-block: 12px; }
+      .nav { gap: 16px; }
+      .nav a { font-size: .76rem; }
+      .hero { grid-template-columns: 1fr; gap: 32px; padding-block: 70px 58px; }
+      .hero-card { min-height: 170px; }
+      .hero-card strong { max-width: 310px; }
+      .content { grid-template-columns: 1fr; gap: 14px; padding-bottom: 64px; }
+      .side-label { margin-top: 0; }
+      .section:first-child { padding-top: 25px; border-top: 1px solid var(--line); }
+    }
+
+    @media (max-width: 460px) {
+      .entry-heading { align-items: flex-start; flex-direction: column; gap: 0; }
+      .skill-list { grid-template-columns: 1fr; gap: 15px; }
+      .contact-card { align-items: flex-start; flex-direction: column; }
+      footer { flex-direction: column; gap: 4px; }
+    }
+
+    @media print {
+      :root { --paper: #fff; }
+      body { font-size: 11pt; }
+      .wrap { width: 100%; }
+      .topbar, .actions, .hero-card, .contact-card, footer { display: none; }
+      .hero { display: block; padding-block: 0 28px; }
+      h1 { font-size: 42pt; }
+      .content { display: block; padding: 0; }
+      .side-label { margin-bottom: 16px; }
+      .section { padding-block: 20px; break-inside: avoid; }
+      a { text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap topbar">
+    <a class="wordmark" href="#home">Aaro Pitkänen</a>
+    <nav class="nav" aria-label="Päänavigaatio">
+      <a href="#experience">Työkokemus</a>
+      <a href="#projects">Projektit</a>
+      <a href="#about">Tietoa minusta</a>
+      <a href="#contact">Yhteystiedot</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="wrap hero" id="home" aria-labelledby="name">
+      <div>
+        <p class="eyebrow">Avoin uusille mahdollisuuksille · Joensuu, Finland</p>
+        <h1 id="name">Aaro Pitkänen</h1>
+        <p class="headline">Ohjelmistokehittäjä</p>
+        <p class="intro">Opiskelen tällä hetkellä ohjelmistokehitystä Riveriassa ja olen nyt toisella vuodella.</p>
+        <div class="actions">
+          <a class="button" href="mailto:hello@example.com">Ota yhteyttä <span aria-hidden="true">&nbsp;↗</span></a>
+          <a class="text-link" href="https://github.com/your-username">GitHub-profiili ↗</a>
+        </div>
+      </div>
+      <aside class="hero-card" aria-label="Ammatillinen painopiste">
+        <span>Tällä hetkellä keskityn</span>
+        <strong>Web-kehitykseen</strong>
+        <small>Tieto -ja viestinnän perustutkinto Riveria Peltola</small>
+      </aside>
+    </section>
+
+    <div class="wrap content">
+      <p class="side-label">Lisätietoja</p>
+      <div>
+        <section class="section" id="about" aria-labelledby="about-title">
+          <h2 id="about-title">Tietoa minusta</h2>
+          <p>Olen opetellut ensimmäisenä vuonna Microsoft perusteet ja mitenkä käyttää niitä. Toisena vuonna on tullut tehtyä Python-ohjelmointia, html ja css ohjelmointia ja GitHub, Azuren käyttöä.</p>
+          <div class="skill-list">
+            <div>
+              <strong>Osaamiseni</strong>
+              <p>Olen omasta mielestäni hyvä ihan perustaitojen kanssa eli sellaista suurempaa koodaamista en vielä osaa.</p>
+            </div>
+            <div>
+              <strong>Työkalut</strong>
+              <p>Visual Studio Code, GitHub, Azure</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="experience" aria-labelledby="experience-title">
+          <h2 id="experience-title">Työkokemus</h2>
+          <article class="entry">
+            <div class="entry-heading">
+              <h3>Siivooja · En muista</h3>
+              <span class="date">Kesä 2025</span>
+            </div>
+            <p class="subline">Ylämylly</p>
+            <ul>
+              <li>Olin päiväkodissa siivoojan apurina ja siivosin lattiat, putsasin pöydät ja vein roskia roskiin.</li>
+              <li>Tämä oli Liperin kunnan tarjoama kesätyö.</li>
+            </ul>
+          </article>
+          <article class="entry">
+            <div class="entry-heading">
+              <h3>Leiriohjaajan apulainen · En muista</h3>
+              <span class="date">Kesä 2026</span>
+            </div>
+            <p class="subline">Ylämylly</p>
+            <ul>
+              <li>Olin kaksi viikkoa töissä leiriohjaajana ylämyllun nuorisotilalla. Siellä oltiin ulkona, askarteltiin ja  leikittiiin erilaisia leikkeäjä nuorten kanssa.</li>
+            </ul>
+          </article>
+        </section>
+
+        <section class="section" id="education" aria-labelledby="education-title">
+          <h2 id="education-title">Koulutus: (Kesken) Tieto -ja viestinnän perustutkinto</h2>
+          <article class="entry">
+            <div class="entry-heading">
+              <h3>Ohjelmistokehittäjä · Riveria Peltola</h3>
+              <span class="date">2025-2028</span>
+            </div>
+            <p class="subline"></p>
+          </article>
+        </section>
+
+        <section class="section" id="contact" aria-labelledby="contact-title">
+          <div class="contact-card">
+            <div>
+              <h2 id="contact-title">Tehdään yhdessä jotain hienoa.</h2>
+              <p>Onko sinulla kiinnostava mahdollisuus tai haluatko vain tervehtiä?</p>
+            </div>
+            <a class="button" href="mailto:hello@example.com">hello@example.com ↗</a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="wrap">
+    <span>© <span id="year">2026</span> Aaro Pitkänen</span>
+    <span>Huolella tehty · Julkaistu GitHub Pagesissa</span>
+  </footer>
+</body>
+</html>
